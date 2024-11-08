@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>My Certificates</h1>
+    <div class="certificates-container">
+        {% for certificate in certificates %}
+            <div class="certificate">
+                <h2>{{ certificate.title }}</h2>
+                <p>{{ certificate.description }}</p>
+                {% if certificate.image %}
+                    <img src="{{ certificate.certificate_image.url }}" alt="{{ certificate.title }}">
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No certificates available.</p>
+        {% endfor %}
+
+{% endblock %}

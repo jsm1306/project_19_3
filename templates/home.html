@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="about-section">
+    <h2>Get to know me here:</h2>
+    
+    <table>
+        <tr><td>Name:</td><td>{{ personal_info.name }}</td></tr>
+        <tr><td>Age:</td><td>{{ personal_info.age }}</td></tr>
+        <tr><td>Date of birth:</td><td>{{ personal_info.dob }}</td></tr>
+        <tr><td>Email:</td><td>{{ personal_info.email }}</td></tr>
+        <tr><td>Gender:</td><td>{{ personal_info.gender }}</td></tr>
+        <tr><td>Languages known:</td><td>{{ personal_info.languages }}</td></tr>
+        <tr><td>Address:</td><td>{{ personal_info.address }}</td></tr>
+        <tr><td>Hobbies:</td><td>{{ personal_info.hobbies }}</td></tr>
+    </table>
+    <br><br>
+    <h2>Qualifications:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Qualification</th>
+                <th>Institution</th>
+                <th>Grade</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for qualification in qualifications %}
+            <tr>
+                <td>{{ qualification.title }}</td>
+                <td>{{ qualification.institution }}</td>
+                <td>{{ qualification.grade }}</td>
+                <td>{{ qualification.year }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table><br><br>
+    <h2>Skills:</h2>
+    <ul>
+        {% for skill in skills %}
+        <li>{{ skill.name }}</li>
+        
+        {% endfor %}
+    </ul>
+    <h2>Projects:</h2>
+    <ul>
+        {% for project in projects %}
+        
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            {% if project.project_link %}
+            <a href="{{ project.project_link }}" target="_blank">View Project</a>
+            {% endif %}
+        
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">Sindhu</div>
+            <ul class="navbar-links">
+                <li><a href="{% url 'home' %}">About Me</a></li>
+                <li><a href="{% url 'certificates_view' %}">Certificates</a></li>
+                
+                <li><a href="{% url 'contact' %}">Contact Me</a></li>
+            </ul>
+            <div class="navbar-search">
+                <input type="text" placeholder="Search">
+                <button>Search</button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
