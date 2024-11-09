@@ -1,29 +1,29 @@
 {% extends 'base.html' %}
-
+{% load static%}
 {% block content %}
 <div class="container">
-    <!-- About Section -->
     <section id="about" class="mb-5">
-        <h2 class="mb-4 ms-3" style="color: #8B0000;">Get to know me here</h2>
+        <h2 class="mb-4 ms-3" style="color: #8B0000;">Welcome!</h2>
         <div class="card p-4 shadow-sm">
-            <p><strong>Name:</strong> {{ personal_info.name }}</p>
-            <p><strong>Age:</strong> {{ personal_info.age }}</p>
-            <p><strong>Date of Birth:</strong> {{ personal_info.dob }}</p>
-            <p><strong>Email:</strong> {{ personal_info.email }}</p>
-            <p><strong>Gender:</strong> {{ personal_info.gender }}</p>
-            <p><strong>Languages Known:</strong> {{ personal_info.languages }}</p>
-            <p><strong>Address:</strong> {{ personal_info.address }}</p>
-            <p><strong>Hobbies:</strong> {{ personal_info.hobbies }}</p>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="{% static '\profile.jpg' %}" alt="My Photo" class="rounded-circle img-fluid mb-3" style="max-width: 200px;">
+                </div>
+                <div class="col-md-8">
+                    <p>Hi, I'm <strong>{{ personal_info.name }}</strong>, currently pursuing a Bachelor of Technology in Artificial Intelligence & Data Science. I'm deeply interested in the fields of machine learning and deep learning, and I enjoy exploring how AI can be applied to solve real-world challenges.</p>
+<p>Outside of my studies, I have a keen interest in mathematics, which has always helped me develop strong analytical skills. Additionally, I enjoy playing badminton, as it provides a great way to stay active.</p>
+<p>Currently, I’m based at {{ personal_info.address }}, and I’m always open to new opportunities for collaboration or discussion. Feel free to reach out to me at <strong>{{ personal_info.email }}</strong>.</p>
+</div>
+            </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="mb-5">
         <h2 class="mb-4 ms-3" style="color: #8B0000;">Skills</h2>
         <div class="row row-cols-2 row-cols-md-3 g-4">
             {% for skill in skills %}
             <div class="col">
-                <div class="card h-100 shadow-sm">
+                <div class="card universal-card h-100">
                     <div class="card-body text-center">
                         <p class="card-text">{{ skill.name }} - {{ skill.level }}</p>
                     </div>
@@ -33,11 +33,10 @@
         </div>
     </section>
 
-    <!-- Research Section -->
     <section id="research" class="mb-5">
         <h2 class="mb-4 ms-3" style="color: #8B0000;">Research</h2>
-        <div class="card shadow-sm p-4">
-            <h3>Breast Cancer Detection in Histopathological Images using Deep Learning <br><strong>[2024 - Present]</strong></h3>
+        <div class="card universal-card p-4">
+            <h3>Breast Cancer Detection in Histopathological Images using Deep Learning <br><strong>[2024 - Present]</strong></h3><br>
             <p><strong>Currently Working On:</strong> Leading research to design a deep learning-based AI model for detecting breast cancer in histopathological images, with a focus on enhancing diagnostic accuracy.</p>
             <p>Gaining expertise in oncological terminology and deep learning, specifically in Convolutional Neural Networks (CNN).</p>
             <p>Studying metrics to accurately assess model performance in medical imaging to ensure reliable results. This research aims to provide clinicians with a reliable tool to aid in the early and efficient diagnosis of breast cancer.</p>
@@ -48,25 +47,23 @@
         <h2 class="mb-4 ms-3" style="color: #8B0000;">Workshops / Conferences Attended</h2>
         <ul class="list-group">
             <li class="list-group-item">Attended a workshop on <strong>Generative AI</strong> at IIT Hyderabad organized by TechTinkers</li>
-            <li class="list-group-item">IEEE GRSS SYW Congress organized by IEEE SB KLH in collaboration with IEEE GRSS IDEA and IEEE REACT India Initiative</li>
+            <li class="list-group-item">Attended IEEE GRSS SYW Congress conference organized by IEEE SB KLH in collaboration with IEEE GRSS IDEA and IEEE REACT India Initiative</li>
         </ul>
     </section>
 
     <section id="projects" class="mb-5">
-        <h2 class="mb-4" style="color: #8B0000;">Projects</h2>
-    
-    {% for project in projects %}
-    <div class="card mb-4" style="width: 100%; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
-        <div class="card-body">
-            <h5 class="card-title">{{ project.title }}</h5>
-            <p class="card-text">{{ project.description }}</p>
-            <a href="{{ project.project_link }}" class="btn btn-primary">View Project</a>
+        <h2 class="mb-4 ms-3" style="color: #8B0000;">Projects</h2>
+        {% for project in projects %}
+        <div class="card universal-card mb-4">
+            <div class="card-body">
+                <h5 class="card-title"><strong>{{ project.title }}</strong></h5>
+                <p class="card-text">{{ project.description }}</p>
+                <a href="{{ project.project_link }}" class="btn btn-blue">View Project</a>
+            </div>
         </div>
-    </div>
-    {% endfor %}
-            
-        </div>
+        {% endfor %}
     </section>
+    
 
     <!-- Contact Section -->
     <section id="contact" class="text-center mb-5">
