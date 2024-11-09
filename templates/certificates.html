@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>My Certificates</h1>
+<h1>Achievements</h1>
     <div class="certificates-container">
         {% for certificate in certificates %}
             <div class="certificate">
@@ -11,6 +11,7 @@
                     <img src="{{ certificate.certificate_image.url }}" alt="{{ certificate.title }}">
                 {% endif %}
             </div>
+            so i have like went to final round in robo race competetion conducted my college, final round in hackathon which was for 24hr
         {% empty %}
             <p>No certificates available.</p>
         {% endfor %}

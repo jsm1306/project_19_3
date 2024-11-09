@@ -21,6 +21,7 @@ class Qualification(models.Model):
     year = models.IntegerField()
 class Skill(models.Model):
     name = models.CharField(max_length=100)
+    level = models.CharField(max_length=100)
 class Certificate(models.Model):
     name = models.CharField(max_length=100)
     issued_by = models.CharField(max_length=100)

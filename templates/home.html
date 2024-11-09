@@ -1,60 +1,87 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="about-section">
-    <h2>Get to know me here:</h2>
-    
-    <table>
-        <tr><td>Name:</td><td>{{ personal_info.name }}</td></tr>
-        <tr><td>Age:</td><td>{{ personal_info.age }}</td></tr>
-        <tr><td>Date of birth:</td><td>{{ personal_info.dob }}</td></tr>
-        <tr><td>Email:</td><td>{{ personal_info.email }}</td></tr>
-        <tr><td>Gender:</td><td>{{ personal_info.gender }}</td></tr>
-        <tr><td>Languages known:</td><td>{{ personal_info.languages }}</td></tr>
-        <tr><td>Address:</td><td>{{ personal_info.address }}</td></tr>
-        <tr><td>Hobbies:</td><td>{{ personal_info.hobbies }}</td></tr>
-    </table>
-    <br><br>
-    <h2>Qualifications:</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Qualification</th>
-                <th>Institution</th>
-                <th>Grade</th>
-                <th>Year</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for qualification in qualifications %}
-            <tr>
-                <td>{{ qualification.title }}</td>
-                <td>{{ qualification.institution }}</td>
-                <td>{{ qualification.grade }}</td>
-                <td>{{ qualification.year }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table><br><br>
-    <h2>Skills:</h2>
-    <ul>
-        {% for skill in skills %}
-        <li>{{ skill.name }}</li>
-        
-        {% endfor %}
-    </ul>
-    <h2>Projects:</h2>
-    <ul>
-        {% for project in projects %}
-        
-            <h3>{{ project.title }}</h3>
-            <p>{{ project.description }}</p>
-            {% if project.project_link %}
-            <a href="{{ project.project_link }}" target="_blank">View Project</a>
-            {% endif %}
-        
-        {% endfor %}
-    </ul>
-</div>
+<div class="container">
+    <!-- About Section -->
+    <section id="about" class="mb-5">
+        <h2 class="mb-4 ms-3" style="color: #8B0000;">Get to know me here</h2>
+        <div class="card p-4 shadow-sm">
+            <p><strong>Name:</strong> {{ personal_info.name }}</p>
+            <p><strong>Age:</strong> {{ personal_info.age }}</p>
+            <p><strong>Date of Birth:</strong> {{ personal_info.dob }}</p>
+            <p><strong>Email:</strong> {{ personal_info.email }}</p>
+            <p><strong>Gender:</strong> {{ personal_info.gender }}</p>
+            <p><strong>Languages Known:</strong> {{ personal_info.languages }}</p>
+            <p><strong>Address:</strong> {{ personal_info.address }}</p>
+            <p><strong>Hobbies:</strong> {{ personal_info.hobbies }}</p>
+        </div>
+    </section>
 
+    <!-- Skills Section -->
+    <section id="skills" class="mb-5">
+        <h2 class="mb-4 ms-3" style="color: #8B0000;">Skills</h2>
+        <div class="row row-cols-2 row-cols-md-3 g-4">
+            {% for skill in skills %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <p class="card-text">{{ skill.name }} - {{ skill.level }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="mb-5">
+        <h2 class="mb-4 ms-3" style="color: #8B0000;">Research</h2>
+        <div class="card shadow-sm p-4">
+            <h3>Breast Cancer Detection in Histopathological Images using Deep Learning <br><strong>[2024 - Present]</strong></h3>
+            <p><strong>Currently Working On:</strong> Leading research to design a deep learning-based AI model for detecting breast cancer in histopathological images, with a focus on enhancing diagnostic accuracy.</p>
+            <p>Gaining expertise in oncological terminology and deep learning, specifically in Convolutional Neural Networks (CNN).</p>
+            <p>Studying metrics to accurately assess model performance in medical imaging to ensure reliable results. This research aims to provide clinicians with a reliable tool to aid in the early and efficient diagnosis of breast cancer.</p>
+        </div>
+    </section>
+
+    <section id="workshops" class="mb-5">
+        <h2 class="mb-4 ms-3" style="color: #8B0000;">Workshops / Conferences Attended</h2>
+        <ul class="list-group">
+            <li class="list-group-item">Attended a workshop on <strong>Generative AI</strong> at IIT Hyderabad organized by TechTinkers</li>
+            <li class="list-group-item">IEEE GRSS SYW Congress organized by IEEE SB KLH in collaboration with IEEE GRSS IDEA and IEEE REACT India Initiative</li>
+        </ul>
+    </section>
+
+    <section id="projects" class="mb-5">
+        <h2 class="mb-4" style="color: #8B0000;">Projects</h2>
+    
+    {% for project in projects %}
+    <div class="card mb-4" style="width: 100%; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+        <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
+            <a href="{{ project.project_link }}" class="btn btn-primary">View Project</a>
+        </div>
+    </div>
+    {% endfor %}
+            
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="text-center mb-5">
+        <h2 style="color: #8B0000;">Connect with Me</h2>
+        <div class="d-flex justify-content-center gap-3 mt-3">
+            <a href="https://www.linkedin.com/in/sindhu-manogna-jammalamadaka-324a55291/" target="_blank" class="text-decoration-none">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://www.instagram.com/sindhu_9642/" target="_blank" class="text-decoration-none">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+            <a href="https://github.com/jsm1306" target="_blank" class="text-decoration-none">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+        </div>
+    </section>
+</div>
 {% endblock %}
